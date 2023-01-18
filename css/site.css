@@ -84,14 +84,57 @@ footer {
     padding-left: .5rem;
 }
 
-.fizz {
 
+
+.fizz {
+    background-color: rgb(32, 32, 32) !important;
+    color: #f73859 !important;
 } 
 
 .fizzBuzz {
-
+    font-weight: bolder;
+    color: #f9dc5f !important;
+    background-color: rgb(10, 10, 10) !important;
 }
 
 .buzz {
+    background-color: rgb(21, 21, 21) !important;
+    color: #38b6ff !important;
+}
 
+
+/* These are Fine */
+.Fizz {
+    font-weight: bolder;
+    color: var(--reg-secondary-color) !important;
+} 
+
+.FizzBuzz {
+    font-weight: bolder;
+    background-color: var(--reg-primary-color) !important;
+    color: var(--reg-secondary-color) !important;
+}
+
+.Buzz {
+    font-weight: bolder;
+    background-color: grey !important;
+    color: var(--reg-primary-color) !important;
+}
+
+
+
+/* Change These & Chnage JS for DRY */
+.fizzDry {
+    font-weight: bold;
+    color: aqua !important;
+} 
+
+.fizzBuzzDry {
+    font-weight: bolder;
+    color: rgb(228, 23, 211) !important;
+}
+
+.buzzDry {
+    font-weight: bold;
+    color: coral !important;
 }

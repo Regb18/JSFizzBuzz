@@ -66,8 +66,8 @@
     </header>
 
     <main class="content container px-4 py-5 mt-5">
-        <div class="row row-cols-1 row-cols-md-2 gy-2 h-100">
-            <div class="col border-2 border-end">
+        <div class="row">
+            <div class="col border-2">
                 <h1 class="fw-bold mb-3">FizzBuzz: A Coding Challenge</h1>
                 <h4 class="lead">
                     Project description
@@ -77,27 +77,28 @@
                     Instruct them
                 </p>
             </div>
-            <div class="col">
                 <form action="#" class="row gy-2 gx-3">
-                    <div class="col">
+                    <div class="col col-lg-4">
                         <input id="fizzValue" type="number" class="form-control" placeholder="Fizz Value"
                             aria-label="Fizz Value" Value="3" />
                     </div>
-                    <div class="col">
+                    <div class="col col-lg-4">
                         <input id="buzzValue" type="number" class="form-control" placeholder="Buzz Value"
                             aria-label="Buzz Value" Value="5" />
                     </div>
-                    <div class="col">
+                    <div class="col col-lg-4">
                         <input id="stopValue" type="number" class="form-control" placeholder="Stop Value"
                             aria-label="Stop Value" Value="100" />
                     </div>
                     <div class="col-12 text-end">
-                        <button class="btn btn-primary btn-lg" id="btnSubmit" type="button">Fizz Buzz!</button>
+                        <button class="btn btn-outline-warning btn" id="btnSubmit" type="button">FizzBuzz!</button>
+                        <button class="btn btn-outline-light btn" type="button" onclick="getValuesTern()">FizzBuzz!</button>
+                        <button class="btn btn-outline-info btn" type="button" onclick="getValuesDry()">FizzBuzz!</button>
                     </div>
                     <h2 class="mt-5 border-bottom border-2">Results</h2>
                     <div class="table-responsive">
-                        <table class="table table-danger fs-5 table-striped">
-                            <tbody id="results">
+                        <table class="table fs-5 table-dark">
+                            <tbody id="results" class="text-center">
                                 <!-- 
                                     100 Goes Here 
                                     ex. <tr><td>1</td></tr>...
@@ -106,7 +107,8 @@
                         </table>
                     </div>
                 </form>
-            </div>
+    
+        </div>
         </div>
     </main>
 
