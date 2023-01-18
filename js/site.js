@@ -1,5 +1,6 @@
 // Three Functions
 
+// entry point
 // Get values from user
 function getValues() {
     let fizzValue = parseInt(document.getElementById('fizzValue').value)
@@ -22,11 +23,16 @@ function getValues() {
             }
         )
     }
+    // Add error if over stop is over 5000
+    // Add error if a number is 0
+    // Can put function calls at the bottom and use isNaN || to check for numbers
 
 }
 
+// Put fizzBuzz check in generate FizzBuzz and only display stuff in displayFizzBuzz
+// Display trick ${fizzbuzzValues.toString().toLowerCase()}
 
-
+// logic function
 // Create array of values
 function generateFizzBuzz(stop) {
 
@@ -40,7 +46,7 @@ function generateFizzBuzz(stop) {
 }
 
 
-
+// view function
 // Display Values
 function displayFizzBuzz(array, fizz, buzz) {
 
@@ -67,8 +73,6 @@ function displayFizzBuzz(array, fizz, buzz) {
             value = 'Buzz'
             className = 'buzz'
 
-        } else {
-            className = 'neither'
         }
 
         if (i % 5 == 0) {
