@@ -7,7 +7,7 @@ function getValues() {
     let buzzValue = parseInt(document.getElementById('buzzValue').value)
     let stopValue = parseInt(document.getElementById('stopValue').value)
 
-    if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue) && Number.isInteger(stopValue)) {
+    if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue) && Number.isInteger(stopValue) && fizzValue > 0 && buzzValue > 0 && stopValue > 0 && stopValue <= 5000) {
 
         let numberArray = generateFizzBuzz(stopValue);
 
@@ -19,11 +19,11 @@ function getValues() {
             {
                 icon: 'error',
                 title: 'Oops!',
-                text: 'Only integers are allowed for FizzBuzz!'
+                text: 'Please Enter Numbers Between 1 and 5000'
             }
         )
     }
-    // Add error if over stop is over 5000
+    // Add error if stop is over 5000
     // Add error if a number is 0
     // Can put function calls at the bottom and use isNaN || to check for numbers
 
@@ -92,6 +92,8 @@ function displayFizzBuzz(array, fizz, buzz) {
     tableBody.innerHTML = tableHTML;
 }
 
+
+
 // Ternary Solution
 function displayFizzBuzzTern(array, fizz, buzz) {
 
@@ -118,7 +120,8 @@ function displayFizzBuzzTern(array, fizz, buzz) {
 
     document.getElementById('results').innerHTML = tableHTML;
 }
-      
+
+
 
 
 
@@ -160,8 +163,6 @@ function displayFizzBuzzDry(array, fizz, buzz) {
     document.getElementById('results').innerHTML = tableHTML;
 
 }
-
-
 
 
 

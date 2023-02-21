@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=0">
-    <title>JS Challenge Template</title>
+    <title>Fizz Buzz</title>
+
+    <link rel="shortcut icon" href="/img/Image20230210232551.png" type="image/x-icon" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -56,7 +59,7 @@
                         </li>
                         <li class="nav-item">
                             <!-- Link to Portfolio -->
-                            <a class="nav-link" href="https://dazzling-sunflower-4462e8.netlify.app/">About</a>
+                            <a class="nav-link" href="https://reggiebarnes.dev/">About</a>
                         </li>
                         <li class="nav-item">
                             <!-- Link to Blog -->
@@ -75,24 +78,140 @@
             <div class="col-12 col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-js">
-                        function displayMessage() {
-                            let msg = document.getElementById('message').value;
-                            
-                            Swal.fire(
-                                {
-                                    backdrop: false,
-                                    title: 'FizzBuzz',
-                                    text: msg
-                                }
-                            );
-                        }
+                        // Three Functions
+
+// entry point
+// Get values from user
+function getValues() {
+    let fizzValue = parseInt(document.getElementById('fizzValue').value)
+    let buzzValue = parseInt(document.getElementById('buzzValue').value)
+    let stopValue = parseInt(document.getElementById('stopValue').value)
+
+    if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue) && Number.isInteger(stopValue) && fizzValue > 0 && buzzValue > 0 && stopValue >= 0) {
+
+        let numberArray = generateFizzBuzz(stopValue);
+
+        displayFizzBuzz(numberArray, fizzValue, buzzValue);
+
+    } else {
+        // if not, tell our user
+        Swal.fire(
+            {
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Please Enter Numbers Greater than 0'
+            }
+        )
+    }
+    // Add error if stop is over 5000
+    // Add error if a number is 0
+    // Can put function calls at the bottom and use isNaN || to check for numbers
+
+}
+
+// Put fizzBuzz check in generate FizzBuzz and only display stuff in displayFizzBuzz
+// Display trick ${fizzbuzzValues.toString().toLowerCase()}
+
+// logic function
+// Create array of values
+function generateFizzBuzz(stop) {
+
+    let numbers = [];
+
+    for(let i = 1; i <= stop; i++) {
+        numbers.push(i);
+    }
+
+    return numbers;
+}
+
+
+// view function
+// Display Values
+function displayFizzBuzz(array, fizz, buzz) {
+
+    let tableBody = document.getElementById('results');
+    let tableHTML = ""
+    
+   for (i = 0; i < array.length; i++) {
+
+        let value = array[i];
+        let className = ""
+
+        if (value % fizz == 0 && value % buzz == 0) {
+            // output FizzBuzz class
+            value = 'FizzBuzz';
+            className = 'fizzBuzz'
+
+        } else if (value % fizz == 0) {
+            // output Fizz class
+            value = 'Fizz'
+            className = 'fizz'
+
+        } else if (value % buzz == 0) {
+            // output Buzz class
+            value = 'Buzz'
+            className = 'buzz'
+
+        }
+
+        if (i % 5 == 0) {
+            tableHTML += "&lt;tr&gt;"
+        }
+        
+        let tableRow = `&lt;td class="${className}">${value}&lt;/td&gt;`; 
+        tableHTML += tableRow; 
+        
+        if ((i + 1) % 5 == 0) {
+            tableHTML += "&lt;/tr&gt;" 
+        } 
+        
+
+    }
+
+    tableBody.innerHTML = tableHTML;
+}
+
+
+
+// Ternary Solution
+function displayFizzBuzzTern(array, fizz, buzz) {
+
+    let tableHTML = ""
+    
+    for (i = 0; i < array.length; i++) {
+
+        let value = array[i];
+        
+        let className = 
+        value % fizz == 0 && value % buzz == 0 ? value = 'FizzBuzz' :
+        value % fizz == 0 ? value = 'Fizz' :
+        value % buzz == 0 ? value = 'Buzz' : 
+        value;
+
+        i % 5 == 0 ? tableHTML += "&lt;tr&gt;" :
+        value;
+        
+        tableHTML += `&lt;td class="${className}">${value}&lt;/td&gt;`;
+        
+        (i + 1) % 5 == 0 ? tableHTML += "&lt;/tr&gt;" :
+        value;
+    }
+
+    document.getElementById('results').innerHTML = tableHTML;
+}
+
                     </code>
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
                 <p>The code is structured in one function</p>
-                <h5><code>displayMessage()</code></h5>
-                <p>This function displays the message in a Sweet Alert</p>
+                <h5><code>getValues()</code></h5>
+                <p>This function first takes the values from the html page and converts them all into ints. It then checks to make sure all of the inputs are numbers and that they are greater than zero. If the condition is true we pass the stop value into generateFizzBuzz and get an array and then pass the array, and our fizz and buzz values to output the results. If we don’t pass the condition you’ll get an error and have a chance to try again.</p>
+                <h5><code>generateFizzBuzz()</code></h5>
+                <p>This function takes stop as a parameter which we will use to get the correct number of items in the array. First we’ll create an empty array and then use a for loop to iterate through that array 1 index at a time until we reach stop and then exit the array. Inside the loop we’ll add each i value to the array: numbers. Since we always want to start at 1 we can set that as the i value. After that, we’ll return the array numbers back to the calling function.</p>
+                <h5><code>displayFizzBuzz()</code></h5>
+                <p>In the Display FizzBuzz function I iterate through the array I’ve created and test each number to see if they are divisible by the fizz and buzz values that the user input. If a number is divisible by both fizz and buzz it is assigned the string value “FizzBuzz” and a classname which is used to change the appearance of the text and table cell it’s in. Otherwise, if the number is equal to fizz or buzz, it will take that string name and class name. The next two of statements are used to ensure the table row is only five entries long before dropping to another row. The code in between there adds our number or FizzBuzz value and it’s class name in HTML format. We then use the tableBody variable which connects to the results ID on our HTML that designates where on the page we want to output the data.</p>
             </div>
         </div>
 
